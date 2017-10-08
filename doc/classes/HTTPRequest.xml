@@ -4,7 +4,7 @@
 		A Node with the ability to send HTTP requests.
 	</brief_description>
 	<description>
-		A Node with the ability to send HTTP requests. Uses a [HTTPClient] internally, supports HTTPS.
+		Send HTTP requests. Uses a [HTTPClient] internally, supports HTTPS.
 		Can be used to make HTTP requests or download files via HTTP.
 	</description>
 	<tutorials>
@@ -23,42 +23,42 @@
 			<return type="int">
 			</return>
 			<description>
-				Return the response body length.
+				Returns the response body length.
 			</description>
 		</method>
 		<method name="get_body_size_limit" qualifiers="const">
 			<return type="int">
 			</return>
 			<description>
-				Return current body size limit.
+				Returns current body size limit.
 			</description>
 		</method>
 		<method name="get_download_file" qualifiers="const">
 			<return type="String">
 			</return>
 			<description>
-				Return the file this request will download into.
+				Returns the file this request will download into.
 			</description>
 		</method>
 		<method name="get_downloaded_bytes" qualifiers="const">
 			<return type="int">
 			</return>
 			<description>
-				Return the amount of bytes this HTTPRequest downloaded.
+				Returns the amount of bytes this HTTPRequest downloaded.
 			</description>
 		</method>
 		<method name="get_http_client_status" qualifiers="const">
 			<return type="int" enum="HTTPClient.Status">
 			</return>
 			<description>
-				Return the current status of the underlying [HTTPClient].
+				Returns the current status of the underlying [HTTPClient].
 			</description>
 		</method>
 		<method name="get_max_redirects" qualifiers="const">
 			<return type="int">
 			</return>
 			<description>
-				Return the maximum amount of redirects that will be followed.
+				Returns the maximum amount of redirects that will be followed.
 			</description>
 		</method>
 		<method name="is_using_threads" qualifiers="const">
@@ -99,7 +99,7 @@
 			<argument index="0" name="path" type="String">
 			</argument>
 			<description>
-				Set the file to download into. Outputs the response body into the file.
+				Sets the file to download into. Outputs the response body into the file.
 			</description>
 		</method>
 		<method name="set_max_redirects">
@@ -108,7 +108,7 @@
 			<argument index="0" name="amount" type="int">
 			</argument>
 			<description>
-				Set the maximum amount of redirects the request will follow.
+				Sets the maximum amount of redirects the request will follow.
 			</description>
 		</method>
 		<method name="set_use_threads">
@@ -117,16 +117,20 @@
 			<argument index="0" name="enable" type="bool">
 			</argument>
 			<description>
-				Make this HTTPRequest use threads.
+				Makes this HTTPRequest use threads.
 			</description>
 		</method>
 	</methods>
 	<members>
 		<member name="body_size_limit" type="int" setter="set_body_size_limit" getter="get_body_size_limit">
+			limit's body size.
+			Returns current body size limit.
 		</member>
 		<member name="max_redirects" type="int" setter="set_max_redirects" getter="get_max_redirects">
+			Maximum amount of redirects the request will follow.
 		</member>
 		<member name="use_threads" type="bool" setter="set_use_threads" getter="is_using_threads">
+			If [code]true[/code] HTTPRequest use threads.
 		</member>
 	</members>
 	<signals>
@@ -149,6 +153,7 @@
 			Request successful.
 		</constant>
 		<constant name="RESULT_CHUNKED_BODY_SIZE_MISMATCH" value="1">
+			RESULT_CHUNKED_BODY_SIZE_MISMATCH
 		</constant>
 		<constant name="RESULT_CANT_CONNECT" value="2">
 			Request failed while connecting.
