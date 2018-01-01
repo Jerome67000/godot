@@ -121,6 +121,7 @@ const char *GDScriptFunctions::get_func_name(Function p_func) {
 		"print_stack",
 		"instance_from_id",
 		"len",
+		"perlin_noise",
 	};
 
 	return _names[p_func];
@@ -389,6 +390,11 @@ void GDScriptFunctions::call(Function p_func, const Variant **p_args, int p_arg_
 			reta.push_back(seed);
 			r_ret = reta;
 
+		} break;
+		case MATH_PERLIN_NOISE_1D: {
+			VALIDATE_ARG_COUNT(1);
+			VALIDATE_ARG_NUM(0);
+			r_ret = Math::perlin_noise((double)*p_args[0]);
 		} break;
 		case MATH_DEG2RAD: {
 			VALIDATE_ARG_COUNT(1);
@@ -1311,6 +1317,7 @@ bool GDScriptFunctions::is_deterministic(Function p_func) {
 		case MATH_RANGE_LERP:
 		case MATH_DECTIME:
 		case MATH_DEG2RAD:
+		case MATH_PERLIN_NOISE_1D:
 		case MATH_RAD2DEG:
 		case MATH_LINEAR2DB:
 		case MATH_DB2LINEAR:

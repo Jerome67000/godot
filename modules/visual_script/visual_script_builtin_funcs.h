@@ -100,6 +100,7 @@ public:
 		VAR_TO_BYTES,
 		BYTES_TO_VAR,
 		COLORN,
+		MATH_PERLIN_NOISE_1D,
 		FUNC_MAX
 	};
 

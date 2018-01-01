@@ -112,8 +112,8 @@ public:
 		PRINT_STACK,
 		INSTANCE_FROM_ID,
 		LEN,
+		MATH_PERLIN_NOISE_1D,
 		FUNC_MAX
-
 	};
 
 	static const char *get_func_name(Function p_func);

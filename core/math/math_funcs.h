@@ -34,6 +34,7 @@
 #include "typedefs.h"
 
 #include "thirdparty/misc/pcg.h"
+#include "thirdparty/misc/perlin_noise.h"
 
 #include <float.h>
 #include <math.h>
@@ -223,6 +224,7 @@ public:
 	static void randomize();
 	static uint32_t rand_from_seed(uint64_t *seed);
 	static uint32_t rand();
+	static double perlin_noise(double x);
 	static _ALWAYS_INLINE_ double randf() { return (double)rand() / (double)Math::RANDOM_MAX; }
 	static _ALWAYS_INLINE_ float randd() { return (float)rand() / (float)Math::RANDOM_MAX; }
 
