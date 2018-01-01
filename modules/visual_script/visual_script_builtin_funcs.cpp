@@ -185,6 +185,7 @@ int VisualScriptBuiltinFunc::get_func_argument_count(BuiltinFunc p_func) {
 		case VAR_TO_BYTES:
 		case BYTES_TO_VAR:
 		case TYPE_EXISTS:
+		case MATH_PERLIN_NOISE_1D:
 			return 1;
 		case MATH_ATAN2:
 		case MATH_FMOD:
@@ -257,7 +258,8 @@ PropertyInfo VisualScriptBuiltinFunc::get_input_value_port_info(int p_idx) const
 		case MATH_ACOS:
 		case MATH_ATAN:
 		case MATH_ATAN2:
-		case MATH_SQRT: {
+		case MATH_SQRT:
+		case MATH_PERLIN_NOISE_1D: {
 			return PropertyInfo(Variant::REAL, "num");
 		} break;
 		case MATH_FMOD:
@@ -526,7 +528,8 @@ PropertyInfo VisualScriptBuiltinFunc::get_output_value_port_info(int p_idx) cons
 		case MATH_FMOD:
 		case MATH_FPOSMOD:
 		case MATH_FLOOR:
-		case MATH_CEIL: {
+		case MATH_CEIL:
+		case MATH_PERLIN_NOISE_1D: {
 			t = Variant::REAL;
 		} break;
 		case MATH_ROUND: {
@@ -702,6 +705,10 @@ void VisualScriptBuiltinFunc::exec_func(BuiltinFunc p_func, const Variant **p_in
 
 			VALIDATE_ARG_NUM(0);
 			*r_return = Math::sin((double)*p_inputs[0]);
+		} break;
+		case VisualScriptBuiltinFunc::MATH_PERLIN_NOISE_1D: {
+			VALIDATE_ARG_NUM(0);
+			*r_return = Math::perlin_noise((double)*p_inputs[0]);
 		} break;
 		case VisualScriptBuiltinFunc::MATH_COS: {
 
@@ -1351,6 +1358,7 @@ void VisualScriptBuiltinFunc::_bind_methods() {
 	BIND_ENUM_CONSTANT(VAR_TO_BYTES);
 	BIND_ENUM_CONSTANT(BYTES_TO_VAR);
 	BIND_ENUM_CONSTANT(COLORN);
+	BIND_ENUM_CONSTANT(MATH_PERLIN_NOISE_1D);
 	BIND_ENUM_CONSTANT(FUNC_MAX);
 }
 
@@ -1442,4 +1450,5 @@ void register_visual_script_builtin_func_node() {
 	VisualScriptLanguage::singleton->add_register_func("functions/built_in/var2bytes", create_builtin_func_node<VisualScriptBuiltinFunc::VAR_TO_BYTES>);
 	VisualScriptLanguage::singleton->add_register_func("functions/built_in/bytes2var", create_builtin_func_node<VisualScriptBuiltinFunc::BYTES_TO_VAR>);
 	VisualScriptLanguage::singleton->add_register_func("functions/built_in/color_named", create_builtin_func_node<VisualScriptBuiltinFunc::COLORN>);
+	VisualScriptLanguage::singleton->add_register_func("functions/built_in/perlin_noise", create_builtin_func_node<VisualScriptBuiltinFunc::MATH_PERLIN_NOISE_1D>);
 }

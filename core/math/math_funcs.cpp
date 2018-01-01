@@ -55,6 +55,10 @@ uint32_t Math::rand() {
 	return pcg32_random_r(&default_pcg);
 }
 
+double Math::perlin_noise(double x) {
+	return noise1(x);
+}
+
 int Math::step_decimals(double p_step) {
 	static const int maxn = 9;
 	static const double sd[maxn] = {
