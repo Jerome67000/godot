@@ -34,7 +34,6 @@
 #include "typedefs.h"
 
 #include "thirdparty/misc/pcg.h"
-//#include "thirdparty/misc/perlin_noise.h"
 
 #include <float.h>
 #include <math.h>

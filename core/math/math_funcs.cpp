@@ -30,6 +30,7 @@
 #include "math_funcs.h"
 
 #include "core/os/os.h"
+#include "noise.h"
 
 pcg32_random_t Math::default_pcg = { 12047754176567800795ULL, PCG_DEFAULT_INC_64 };
 
@@ -56,7 +57,8 @@ uint32_t Math::rand() {
 }
 
 double Math::perlin_noise(double x) {
-	return noise1(x);
+	const noise::PerlinNoise perlin(123456);
+	return perlin.noise(x);
 }
 
 int Math::step_decimals(double p_step) {
